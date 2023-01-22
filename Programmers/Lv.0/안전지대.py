@@ -8,7 +8,7 @@ def solution(board):
             if board[y][x] == 1:
 
                 for d in danger:
-                    if 0<=y+d[0]<=len(board) and 0<=x+d[1]<=len(board):
+                    if 0<=y+d[0]<len(board) and 0<=x+d[1]<len(board):
                         if board[y+d[0]][x+d[1]] != 1:
                             board[y+d[0]][x+d[1]] = 2
 
