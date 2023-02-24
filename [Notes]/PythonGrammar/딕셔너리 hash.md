@@ -58,3 +58,14 @@ dict_values(['pey', '010-9999-1234', '1118'])
 
 ### 참고자료
 https://wikidocs.net/16
+
+## 한 key 값에 여러개의 값을 넣고 싶을 경우
+value의 형식을 리스트로 사용한다면 가능
+```python
+ha = dict()
+print(ha)
+ha[1234]=[12]
+print(ha)
+ha[1234].append(122)
+print(ha)
+```
