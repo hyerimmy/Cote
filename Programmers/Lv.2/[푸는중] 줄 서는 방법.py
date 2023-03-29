@@ -1,15 +1,20 @@
+def factorial(n):
+    if n < 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
 def solution(n, k):
     answer = []
     nlist = list(range(1, n+1))
 
-    while n != 1:
-        sub = 1
-        for i in range(1, n):
-            sub *= i
+    for _ in range(0,n):
+        sub = factorial(n-1)
         if k == sub:
-            for n in nlist:
-                answer.append(n)
+            answer = answer + nlist
             break
+        if k == 0:
+            answer.append(nlist.pop(k//sub -1))
         answer.append(nlist.pop(k // sub))
         new = [k // n, k % n]
         k = new[0]
