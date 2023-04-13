@@ -12,17 +12,26 @@
 #
 #     return answer
 
+# def solution(numbers):
+#     answer = [-1] * len(numbers)
+#     stack_number_index = []
+#
+#     for index, number in enumerate(numbers):
+#         for stack_index in stack_number_index.copy():
+#             if numbers[stack_index] < number:
+#                 stack_number_index.pop()
+#                 answer[stack_index] = number
+#         stack_number_index.append(index)
+#     return answer
+
 def solution(numbers):
-    answer = [-1]*(len(numbers))
-    stack = []
-    print(stack)
-    for i, number in enumerate(numbers):
-        print("<<num>>",number)
-        print(stack)
-        print("answer",answer)
-        while stack and numbers[stack[-1]] < number:
-            answer[stack.pop()] = number
-        stack.append(i)
+    answer = [-1] * len(numbers)
+    stack_index = []
+
+    for index, number in enumerate(numbers):
+        while stack_index and numbers[stack_index[-1]] < number:
+            answer[stack_index.pop()] = number
+        stack_index.append(index)
     return answer
 
 print(solution([2, 3, 3, 5]	))
