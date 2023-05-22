@@ -1,19 +1,21 @@
-def calculate(x_list, y, n, cnt):
-    new_x_list = []
-    for x in x_list:
-        for new_x in [x*3, x*2, x+n]:
-            if new_x == y:
+def calculate(y_list, x, n, cnt):
+    new_y_list = []
+    for y in y_list:
+        for new_y in [y/3, y/2, y-n]:
+            if new_y == x:
                 return True, cnt+1
-            elif new_x < y:
-                new_x_list.append(new_x)
-    return False, new_x_list
+            elif new_y > x and (new_y == int(new_y)):
+                new_y_list.append(new_y)
+    return False, new_y_list
 
 def solution(x, y, n):
+    if x == y:
+        return 0
     is_find = False
     cnt = 0
-    result = [x]
+    result = [y]
     while not is_find:
-        is_find, result = calculate(result, y, n, cnt)
+        is_find, result = calculate(result, x, n, cnt)
         cnt+=1
         if is_find:
             return result
