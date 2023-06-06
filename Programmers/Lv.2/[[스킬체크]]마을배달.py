@@ -1,3 +1,4 @@
+# https://life318.tistory.com/12
 def solution(N, road, K):
     answer = 0
 
