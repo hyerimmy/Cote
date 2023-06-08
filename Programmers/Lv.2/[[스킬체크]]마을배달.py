@@ -23,7 +23,7 @@ def solution(N, road, K):
     for destination in range(2,N+1):
         print(destination)
         result_list = []
-        road_dict[]
+        # road_dict[]
         go_one_road(0,[1],1,destination,[])
 
     return answer
