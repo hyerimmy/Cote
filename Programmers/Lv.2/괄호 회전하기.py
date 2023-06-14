@@ -2,6 +2,9 @@ def solution(s):
     answer = 0
     pair = {"(": ")", "[": "]", "{": "}"}
 
+    if len(s) % 2 == 1:
+        return 0
+
     for i in range(0, len(s)):
         answer += 1
         ss = s[i:] + s[:i]
