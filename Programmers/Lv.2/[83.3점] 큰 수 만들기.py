@@ -1,21 +1,17 @@
 def solution(number, k):
-    result = ""
-    number_list = list(number)
-    result_len = len(number)-k
-    for i in range(1, result_len+1):
-        left = result_len-i
-        print("left - ", left)
-        if left == 0:
-            left = -len(number_list)
-        start_number_pool = number_list[:-left]
-        print("number_list-> ",number_list)
-        print("start-> ",start_number_pool)
-        max_start_number = max(start_number_pool)
-        result += str(max_start_number)
-        print("--result",result)
-        number_list = number_list[(start_number_pool.index(max_start_number) + 1):]
-    return result
+    t = len(number) - k  # 최종 결과값 길이
+    candidate_pool = [number]
+    for i in range(t):
+        new_candidate_pool = []
+        for candidate in candidate_pool:
+            k = len(candidate)-t
+            new_candidate_pool.extend([candidate[:i]+candidate[i+idx:] for idx, n in enumerate(candidate[i:i+k+1]) if n == max(candidate[i:i+k+1])])
+        candidate_pool = [number for number in new_candidate_pool if number[:i] == max([number[:i] for number in new_candidate_pool])]
+        print(candidate_pool)
+        if len(candidate_pool) == 1 and len(candidate_pool[0]) == t:
+            return candidate_pool[0]
+
 
 # print(solution("1924",2))
-print(solution("1231234",3))
+print(solution("1331234", 3))
 # print(solution("4177252841",4))
