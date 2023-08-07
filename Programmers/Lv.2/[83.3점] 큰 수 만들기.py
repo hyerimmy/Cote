@@ -1,15 +1,23 @@
 def solution(number, k):
-    t = len(number) - k  # 최종 결과값 길이
-    candidate_pool = [number]
-    for i in range(t):
-        new_candidate_pool = []
-        for candidate in candidate_pool:
-            k = len(candidate)-t
-            new_candidate_pool.extend([candidate[:i]+candidate[i+idx:] for idx, n in enumerate(candidate[i:i+k+1]) if n == max(candidate[i:i+k+1])])
-        candidate_pool = [number for number in new_candidate_pool if number[:i] == max([number[:i] for number in new_candidate_pool])]
-        print(candidate_pool)
-        if len(candidate_pool) == 1 and len(candidate_pool[0]) == t:
-            return candidate_pool[0]
+    result = ""
+    if k == len(number)-1:
+        return max(list(number))
+    number_list = list(number)
+    result_len = len(number)-k
+    for i in range(1, result_len+1):
+        left = result_len-i
+        if left == 0:
+            left = -len(number_list)
+        start_number_pool = number_list[:-left]
+        max_start_number = -1
+        for _number in start_number_pool:
+            if int(_number) > max_start_number:
+                max_start_number = int(_number)
+            if int(_number) == 9:
+                break
+        result += str(max_start_number)
+        number_list = number_list[(start_number_pool.index(str(max_start_number)) + 1):]
+    return result
 
 
 # print(solution("1924",2))
